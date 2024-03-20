@@ -1,0 +1,43 @@
+{
+    "manifest_version": 3,
+    "name": "anysites",
+    "version": "1.0.0",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "scripting",
+        "sidePanel",
+        "bookmarks",
+        "downloads",
+        "history",
+        "clipboardWrite"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "action": {
+        "default_title": "action"
+    },
+    "background": {
+        "service_worker": "service-worker.js",
+        "type": "module"
+    },
+    "commands": {
+        "X": {
+            "suggested_key": { "default": "Alt+X" },
+            "description": " "
+        },
+        "C": {
+            "suggested_key": { "default": "Alt+C" },
+            "description": " "
+        },
+        "Z": {
+            "suggested_key": { "default": "Alt+Z" },
+            "description": " "
+        },
+        "R": {
+            "suggested_key": { "default": "Alt+R" },
+            "description": " "
+        }
+    }
+}
