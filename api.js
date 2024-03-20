@@ -11,8 +11,7 @@ const api = {
 
     let files = [
       '_',
-      // hostname,
-      hostname.replace(/^(www|jp)\.|\.(net|com|jp)$/g, ''),
+      hostname.replace(/^(www|jp)\.|\.(net|com|co\.jp|jp)$/g, ''),
     ]
     .map(filename => 'content-scripts/' + filename)
 

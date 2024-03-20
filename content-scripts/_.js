@@ -12,6 +12,16 @@ window.api = {}
 window.api.chrome = {}
 
 ;`
+glob
+$$
+`
+.trim()
+.split(/\s+/)
+.forEach(s => {
+  window.api[s] = (...args) => chrome.runtime.sendMessage([s, ...args])
+})
+
+;`
 tabs.query
 bookmarks.getTree
 bookmarks.search
@@ -24,16 +34,5 @@ history.search
   let [apiName, methodName] = s.split('.')
   window.api.chrome[apiName] ??= {}
   window.api.chrome[apiName][methodName] = (...args) => chrome.runtime.sendMessage([`chrome.${apiName}.${methodName}`, ...args])
-})
-
-window.api = new Proxy(window.api, {
-  get: (target, p, receiver) => {
-    if (p in target) {
-      return target[p]
-    } else {
-      // return (...args) => console.log([p, ...args])
-      return (...args) => chrome.runtime.sendMessage([p, ...args])
-    }
-  },
 })
 
